@@ -40,7 +40,6 @@ public class NettyBootstrapServer extends AbstractBootstrapServer{
         return serverBean;
     }
 
-
     @Override
     public void setServerBean(InitBean serverBean) {
         this.serverBean = serverBean;
@@ -73,7 +72,7 @@ public class NettyBootstrapServer extends AbstractBootstrapServer{
                     // 初始化各种 Handler
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        //initHandler(ch.pipeline(), serverBean);
+                        initHandler(ch.pipeline(), serverBean);
                     }
                 })
                 .childOption(ChannelOption.TCP_NODELAY, serverBean.isTcpNodelay())

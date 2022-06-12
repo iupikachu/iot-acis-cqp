@@ -20,6 +20,7 @@
         <module>iot-server</module>
         <module>common</module>
         <module>iot-client-test</module>
+        <module>iot-mqtt-client</module>
     </modules>
 
     <properties>

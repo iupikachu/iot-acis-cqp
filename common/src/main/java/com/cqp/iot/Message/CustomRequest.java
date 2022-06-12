@@ -16,6 +16,6 @@ public class CustomRequest extends Message {
         return CUSTOM_MESSAGE_TYPE_REQUEST;
     }
 
-    public Integer data;
+    public String data;
 
 }

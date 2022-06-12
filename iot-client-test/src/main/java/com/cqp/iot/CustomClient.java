@@ -18,12 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author cqp
  * @version 1.0.0
- * @ClassName client.java
+ * @ClassName CustomClient.java
  * @Description 客户端测试连接
  * @createTime 2022年06月09日 13:44:00
  */
 @Slf4j
-public class client {
+public class CustomClient {
     public static void main(String[] args) {
         NioEventLoopGroup group = new NioEventLoopGroup();
         //LoggingHandler LOGGING_HANDLER = new LoggingHandler(LogLevel.DEBUG);
@@ -38,11 +38,11 @@ public class client {
                 protected void initChannel(SocketChannel ch) throws Exception {
                     ch.pipeline().addLast(new ProcotolFrameDecoder());
                     ch.pipeline().addLast(MESSAGE_CODEC);
-                    ch.pipeline().addLast("client handler",new ChannelInboundHandlerAdapter(){
+                    ch.pipeline().addLast("CustomClient handler",new ChannelInboundHandlerAdapter(){
                         @Override
                         public void channelActive(ChannelHandlerContext ctx) throws Exception {
                             CustomRequest customRequest = new CustomRequest();
-                            customRequest.setData(19970823);
+                            customRequest.setData("物联网测试数据：0.1℃/0.2℉");
                             ctx.writeAndFlush(customRequest);
                             System.out.println("客户端发送数据:" + customRequest.data);
                             //super.channelActive(ctx);
@@ -56,7 +56,7 @@ public class client {
             channel.closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("client error",e);
+            log.error("CustomClient error",e);
         }finally {
             group.shutdownGracefully();
         }

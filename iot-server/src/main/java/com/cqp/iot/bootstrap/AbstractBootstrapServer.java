@@ -1,6 +1,5 @@
 package com.cqp.iot.bootstrap;
 
-
 import com.cqp.iot.handler.Codec.MessageCodecSharble;
 import com.cqp.iot.handler.Codec.ProcotolFrameDecoder;
 import com.cqp.iot.handler.customHandler.CustomRequestHandler;
